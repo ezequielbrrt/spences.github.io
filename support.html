@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support & Help - Spences</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background-color: #f8fafc;
+        }
+
+        /* Header with brand color */
+        .header {
+            background: linear-gradient(135deg, #183a4a 0%, #0f2027 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="40" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="40" cy="80" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #fff, #f0f8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .nav-link {
+            display: inline-block;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Quick Help Section */
+        .quick-help {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .help-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-align: center;
+        }
+
+        .help-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .help-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #183a4a, #0f2027);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .help-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .help-card p {
+            color: #718096;
+            margin-bottom: 1.5rem;
+        }
+
+        .help-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #183a4a, #0f2027);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .help-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(24, 58, 74, 0.3);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #183a4a;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1.5rem 0;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #183a4a;
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-toggle.open {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: #4a5568;
+            margin-top: 0;
+        }
+
+        .faq-answer.open {
+            max-height: 200px;
+            margin-top: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 3rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .contact-method {
+            text-align: center;
+            padding: 2rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-method:hover {
+            border-color: #183a4a;
+            background: rgba(24, 58, 74, 0.05);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #183a4a, #0f2027);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-method h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2d3748;
+        }
+
+        .contact-method p {
+            color: #4a5568;
+            margin-bottom: 1rem;
+        }
+
+        .contact-link {
+            color: #183a4a;
+            font-weight: 600;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Response Time */
+        .response-info {
+            background: linear-gradient(135deg, rgba(24, 58, 74, 0.1), rgba(15, 32, 39, 0.1));
+            border-left: 4px solid #183a4a;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 0 15px 15px 0;
+        }
+
+        .response-info h4 {
+            color: #183a4a;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a202c;
+            color: white;
+            padding: 3rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-nav {
+            margin-bottom: 2rem;
+        }
+
+        .footer-nav a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin: 0 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 2rem 1rem;
+            }
+            
+            .faq-section,
+            .contact-section {
+                padding: 2rem;
+            }
+            
+            .quick-help {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">💰 Spences</div>
+            <h1>Support & Help Center</h1>
+            <p>Get the help you need </p>
+            
+        </div>
+    </header>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    How do I add a new subscription to track?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    To add a subscription, tap the "+" button in the app, enter the service name, cost, and billing frequency. You can also categorize it (streaming, productivity, etc.) and set up renewal reminders.
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFAQ(this)">
+                    Can I connect my bank account to automatically track subscriptions?
+                    <span class="faq-toggle">+</span>
+                </div>
+                <div class="faq-answer">
+                    No! Spences don't save your banking credentials.
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <p style="text-align: center; color: #4a5568; margin-bottom: 2rem;">
+                Our support team is here to help you get the most out of Spences. Choose the best way to reach us:
+            </p>
+
+            <div class="contact-grid">
+                <div class="contact-method">
+                    <div class="contact-icon">📧</div>
+                    <h4>Email Support</h4>
+                    <p>Get detailed help with any questions or issues. We respond to all emails personally.</p>
+                    <a href="mailto:ezequielbrrt@gmail.com" class="contact-link">ezequielbrrt@gmail.com</a>
+                </div>
+
+                <div class="contact-method">
+                    <div class="contact-icon">🐛</div>
+                    <h4>Bug Reports</h4>
+                    <p>Found a bug or have a feature request? Let us know so we can make Spences even better.</p>
+                    <a href="mailto:ezequielbrrt@gmail.com?subject=Bug Report - Spences" class="contact-link">Report Issue</a>
+                </div>
+            </div>
+
+            <div class="response-info">
+                <h4>📅 Response Times</h4>
+                <p><strong>Email Support:</strong> We typically respond within 24 hours on business days (Monday-Friday). For urgent issues, please mark your email as "Urgent" in the subject line.</p>
+                <p><strong>Bug Reports:</strong> Critical bugs are addressed immediately. Feature requests and minor issues are reviewed weekly and included in our development roadmap.</p>
+            </div>
+        </section>
+
+        <!-- Getting Started Guide -->
+        <section class="faq-section" id="getting-started">
+            <h2 class="section-title">Getting Started Guide</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div style="padding: 2rem; border: 2px solid #e2e8f0; border-radius: 15px;">
+                    <h4 style="color: #183a4a; margin-bottom: 1rem;">Step 1: Create Your Account</h4>
+                    <p>Download Spences and sign up with your email. Enable notifications to get renewal alerts and spending updates.</p>
+                </div>
+                
+                <div style="padding: 2rem; border: 2px solid #e2e8f0; border-radius: 15px;">
+                    <h4 style="color: #183a4a; margin-bottom: 1rem;">Step 2: Add Subscriptions</h4>
+                    <p>Manually add your subscriptions</p>
+                </div>
+                
+                <div style="padding: 2rem; border: 2px solid #e2e8f0; border-radius: 15px;">
+                    <h4 style="color: #183a4a; margin-bottom: 1rem;">Step 4: Review & Optimize</h4>
+                    <p>Use the analytics dashboard to identify unused subscriptions and optimize your spending patterns.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-answer.open').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('open');
+                    item.previousElementSibling.querySelector('.faq-toggle').classList.remove('open');
+                }
+            });
+            
+            // Toggle current item
+            answer.classList.toggle('open');
+            toggle.classList.toggle('open');
+        }
+
+        // Smooth scrolling for anchor links
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+
+            // Add hover effects to help cards
+            document.querySelectorAll('.help-card, .contact-method').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
